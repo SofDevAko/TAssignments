@@ -1,0 +1,17 @@
+﻿@model theWall.Models.LoginUser
+<h2>The Wall Login and Registration</h2>
+    <h3>@ViewBag.usererror</h3>
+    <h3>Login Here</h3>
+    <form asp-controller="User" asp-action="Login" method="post">
+        <label asp-for="email">Email</label>
+        <input asp-for="email"/><br>
+        <label asp-for="password">Password</label>
+        <input asp-for="password"/><br>
+        <button type="submit">Login</button><br>
+    </form>
+    <div asp-validation-summary="All"></div>
+
+    <a asp-action="Register">Click here to Register!</a><br>
+    <a asp-route="wall">Logged in? Go to the Wall!</a>
+    <h2>@ViewBag.result</h2>
+    <hr>

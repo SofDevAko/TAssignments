@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Akin's the Wall</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    @model theWall.Models.RegisterUser
+
+    <h3>Register Here</h3>
+    <form asp-controller="User" asp-action="Create" method="post">
+        
+        <label asp-for="firstname">First Name</label>
+        <input asp-for="firstname"/><br>
+        
+        <label asp-for="lastname">Last Name</label>
+        <input asp-for="lastname"/><br>
+        
+        <label asp-for="email">Email</label>
+        <input asp-for="email"/><br>
+        
+        <label asp-for="password">Password</label>
+        <input asp-for="password"/><br>
+        
+        <label asp-for="confirmPassword">Confirm Password</label>
+        <input asp-for="confirmPassword"/><br>
+        <button type="submit">Create new User</button><br>
+    </form>
+    <div asp-validation-summary="All"></div>
+
+    <a href="/">Click here to Login!</a>
+    <h2>@ViewBag.result</h2>
+</body>
+</html>

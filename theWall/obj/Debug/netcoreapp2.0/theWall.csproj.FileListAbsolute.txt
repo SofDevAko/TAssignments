@@ -1,0 +1,10 @@
+C:\Users\akino\Desktop\Akin\Coding Dojo\TAssignments\theWall\bin\Debug\netcoreapp2.0\theWall.deps.json
+C:\Users\akino\Desktop\Akin\Coding Dojo\TAssignments\theWall\bin\Debug\netcoreapp2.0\theWall.runtimeconfig.json
+C:\Users\akino\Desktop\Akin\Coding Dojo\TAssignments\theWall\bin\Debug\netcoreapp2.0\theWall.runtimeconfig.dev.json
+C:\Users\akino\Desktop\Akin\Coding Dojo\TAssignments\theWall\bin\Debug\netcoreapp2.0\theWall.dll
+C:\Users\akino\Desktop\Akin\Coding Dojo\TAssignments\theWall\bin\Debug\netcoreapp2.0\theWall.pdb
+C:\Users\akino\Desktop\Akin\Coding Dojo\TAssignments\theWall\obj\Debug\netcoreapp2.0\theWall.csproj.CoreCompileInputs.cache
+C:\Users\akino\Desktop\Akin\Coding Dojo\TAssignments\theWall\obj\Debug\netcoreapp2.0\theWall.AssemblyInfoInputs.cache
+C:\Users\akino\Desktop\Akin\Coding Dojo\TAssignments\theWall\obj\Debug\netcoreapp2.0\theWall.AssemblyInfo.cs
+C:\Users\akino\Desktop\Akin\Coding Dojo\TAssignments\theWall\obj\Debug\netcoreapp2.0\theWall.dll
+C:\Users\akino\Desktop\Akin\Coding Dojo\TAssignments\theWall\obj\Debug\netcoreapp2.0\theWall.pdb

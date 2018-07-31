@@ -1,0 +1,30 @@
+body{
+    background-color: black;
+}
+#scoreboard{
+    color: beige;
+    border: 2px solid beige;
+    font-weight: bold;
+    text-align: center;
+}
+div.row div{
+    width: 20px;
+    height: 20px;
+    border: 1px solid black;
+    display: inline-block;
+}
+div.brick{
+    background-color: blue;
+}
+div.coin{
+    background-image: url("coin.gif");
+    background-position: center;
+    background-size: cover;
+}
+div.pacman{
+    background-image: url("pac.gif");
+    background-position: center;
+    background-size: cover;
+}
+div.empty{
+}
