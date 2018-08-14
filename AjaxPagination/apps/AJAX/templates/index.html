@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Akin's AJAX Pagination</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <script  src="https://code.jquery.com/jquery-3.3.1.js"  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="  crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+</head>
+<body>
+
+    <ul id="error" class="messages">
+    </ul>
+    <h2>AJAX Pagination</h2>
+    <b>First Name:</b><input class= "form" type="text" id="first_name"><br>
+    <b>Last Name:</b><input class= "form" type="text" id="last_name"><br>
+    <b>Email Address:</b><input class= "form" type="text" id="email"><br>
+    <b>Page:</b><a class="link" href="">1</a>/<a class="link" href="">2</a>/<a class="link" href="">3</a>/<a class="link" href="">4</a>/<a class="link" href="">5</a>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Registered Date</th>
+            <th>E-mail Address</th>
+        </thead>
+        <tbody id="table">
+        </tbody>
+    </table>
+</body>
+<script>
+    $(document).ready(function(){
+        var page = 1;
+        var csrftoken = Cookies.get('csrftoken');
+        console.log(page)
+        var pagedata = {
+            'page' : page,
+            'csrfmiddlewaretoken': csrftoken
+        }
+        $.ajax({
+            url: '/get/',
+            method: 'POST',
+            data: pagedata,
+            success: function(res){
+                var message = JSON.parse(res)
+                console.log(message)
+                var list = ''
+                for(i=0; i<message.length;i++){
+                    list += '<tr><td>'+message[i]['id']+'</td><td>'+message[i]['first_name']+'</td><td>'+message[i]['last_name']+'</td><td>'+message[i]['created_at']+'</td><td>'+message[i]['email']+'</td></tr>'
+                }
+                $('#table').html(list)
+            }
+        })
+
+        $('.link').click(function(e){
+            e.preventDefault();
+            var page = $(this).html()
+            var pagedata = {
+            'page' : page,
+            'csrfmiddlewaretoken': csrftoken
+            }
+            console.log(page)
+            $.ajax({
+                url: '/get/',
+                method: 'POST',
+                data: pagedata,
+                success: function(res){
+                    var message = JSON.parse(res)
+                    console.log(message)
+                    var list = ''
+                    for(i=0; i<message.length;i++){
+                        list += '<tr><td>'+message[i]['id']+'</td><td>'+message[i]['first_name']+'</td><td>'+message[i]['last_name']+'</td><td>'+message[i]['created_at']+'</td><td>'+message[i]['email']+'</td></tr>'                    }
+                    $('#table').html(list)
+                }
+            })
+        });
+
+        
+
+
+        $(".form").keyup(function(e) {
+        if (e.which == 13) // Enter key
+            $(this).blur();
+        });
+        $('.form').blur(function(){
+            var fn = document.getElementById('first_name').value;
+            var ln = document.getElementById('last_name').value;
+            var em = document.getElementById('email').value;
+            if (fn.length > 0 && ln.length > 0 && em.length > 0){
+                var formdata = {
+                first_name : fn,
+                last_name : ln,
+                email : em,
+                'csrfmiddlewaretoken': csrftoken
+            }
+            $.ajax({
+                url: '/create/',
+                method: 'POST',
+                data: formdata,
+                success: function(res){
+                    $('#error').html('')
+                    var message = JSON.parse(res)
+                    for(i=0;i<message.response.length;i++){
+                        $('#error').append(message.response[i])
+                    }
+                    $.ajax({
+                        url: '/get/',
+                        method: 'POST',
+                        data: pagedata,
+                        success: function(res){
+                            var message = JSON.parse(res)
+                            console.log(message)
+                            var list = ''
+                            for(i=0; i<message.length;i++){
+                                list += '<tr><td>'+message[i]['id']+'</td><td>'+message[i]['first_name']+'</td><td>'+message[i]['last_name']+'</td><td>'+message[i]['created_at']+'</td><td>'+message[i]['email']+'</td></tr>'                    }
+                            $('#table').html(list)
+                        }
+                    })
+                },
+            });
+            }
+            else{
+                console.log('Field empty')
+            }
+        });
+    });
+</script>
+</html>
